@@ -1,0 +1,27 @@
+# ==============================================================================
+# GLOBAL SHARED CONFIGURATION (Inherited by all microservices)
+# Ride-Hailing & Logistics Platform
+# ==============================================================================
+spring:
+  threads:
+    virtual:
+      enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+
+logging:
+  level:
+    root: INFO
+    com.ridehailing.logistics: DEBUG
+    org.springframework.web: INFO

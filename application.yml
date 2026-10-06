@@ -2,11 +2,6 @@
 # GLOBAL SHARED CONFIGURATION (Inherited by all microservices)
 # Ride-Hailing & Logistics Platform
 # ==============================================================================
-spring:
-  threads:
-    virtual:
-      enabled: true
-
 eureka:
   client:
     service-url:
@@ -14,11 +9,33 @@ eureka:
   instance:
     prefer-ip-address: true
 
+spring:
+  threads:
+    virtual:
+      enabled: true
+  datasource:
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  kafka:
+    bootstrap-servers: localhost:9092
+
 management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics,prometheus
+        include: health,info,prometheus
 
 logging:
   level:
